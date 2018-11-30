@@ -19,20 +19,20 @@ class App extends Component {
     });
   };
 
-  deletePersonHandler = index => {
+  deletePersonHandler = id => {
     this.setState({
-      people: this.state.people.filter((_, idx) => index !== idx)
+      people: this.state.people.filter(person => person.id !== id)
     });
   };
 
-  nameChangedHandler = ({ newName }, index) => {
+  nameChangedHandler = ({ newName }, id) => {
     this.setState({
-      people: this.state.people.map((item, idx) => {
-        if (idx !== index) {
-          return item;
+      people: this.state.people.map(person => {
+        if (person.id !== id) {
+          return person;
         }
 
-        return Object.assign({}, item, { name: newName });
+        return Object.assign({}, person, { name: newName });
       })
     });
   };
@@ -49,8 +49,8 @@ class App extends Component {
             key={person.id}
             name={person.name}
             age={person.age}
-            click={() => this.deletePersonHandler(index)}
-            changed={event => this.nameChangedHandler(event, index)}
+            click={() => this.deletePersonHandler(person.id)}
+            changed={event => this.nameChangedHandler(event, person.id)}
           >
             {person.other}
           </Person>
