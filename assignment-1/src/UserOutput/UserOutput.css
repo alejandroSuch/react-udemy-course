@@ -1,0 +1,8 @@
+.UserOutput {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #bebebe;
+    margin: 8px;
+    padding: 16px;
+}
